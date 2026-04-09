@@ -97,6 +97,12 @@ vim.lsp.config("docker_compose_language_service", {
 })
 vim.lsp.enable("docker_compose_language_service")
 
+vim.lsp.config("llvm", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+vim.lsp.enable("llvm")
+
 vim.filetype.add({
     filename = {
         ["docker-compose.yml"] = "yaml.docker-compose",
@@ -109,5 +115,9 @@ vim.filetype.add({
         ["docker%-compose%..*"] = "yaml.docker-compose",
         ["compose%..*"] = "yaml.docker-compose",
         ["Dockerfile%..*"] = "dockerfile",
+    },
+    extension = {
+	ll = "llvm",
+	mir = "llvm"
     },
 })
